@@ -5,11 +5,7 @@
 @media print {
   body { background: white !important; color: #111827 !important; }
   aside, header, button, nav { display: none !important; }
-  main, .flex-1, .w-80, .xl\\:w-96 { width: 100% !important; height: auto !important; display: block !important; }
-  .bg-\\[\\#111318\\], .bg-\\[\\#0a0c10\\] { background: white !important; color: #111827 !important; }
-  .text-slate-100, .text-slate-200, .text-slate-300 { color: #111827 !important; }
-  .text-slate-400, .text-slate-500 { color: #4b5563 !important; }
-  .border-slate-800\\/60, .border-slate-800\\/50 { border-color: #d1d5db !important; }
+  main { width: 100% !important; height: auto !important; display: block !important; }
   .shadow-sm, .shadow-2xl { box-shadow: none !important; }
 }
 
