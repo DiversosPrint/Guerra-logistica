@@ -1,5 +1,6 @@
 const $=s=>document.querySelector(s), key='guerra-veiculos-v1';
 const styleLink=document.createElement('link');styleLink.rel='stylesheet';styleLink.href='/overrides.css';document.head.append(styleLink);
+const splash=document.createElement('div');splash.className='app-splash';splash.innerHTML='<img src="/icon-g.svg"><h1>Guerra Logística</h1><p>Manutenção</p><i></i>';document.body.append(splash);window.addEventListener('load',()=>setTimeout(()=>splash.classList.add('hide'),650));
 let vehicles=JSON.parse(localStorage.getItem(key)||'[]'), selected=null;
 const save=()=>{vehicles.forEach(v=>{if(!v.vehicleType)v.vehicleType=(typeof vehicleTypeSelect!=='undefined'?vehicleTypeSelect.value:'Cavalo 4x2')});localStorage.setItem(key,JSON.stringify(vehicles));syncRemote();};
 const vehicleDialog=$('#vehicleDialog'), serviceDialog=$('#serviceDialog');
