@@ -2,26 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@media print {
+  body { background: white !important; color: #111827 !important; }
+  aside, header, button, nav { display: none !important; }
+  main, .flex-1, .w-80, .xl\\:w-96 { width: 100% !important; height: auto !important; display: block !important; }
+  .bg-\\[\\#111318\\], .bg-\\[\\#0a0c10\\] { background: white !important; color: #111827 !important; }
+  .text-slate-100, .text-slate-200, .text-slate-300 { color: #111827 !important; }
+  .text-slate-400, .text-slate-500 { color: #4b5563 !important; }
+  .border-slate-800\\/60, .border-slate-800\\/50 { border-color: #d1d5db !important; }
+  .shadow-sm, .shadow-2xl { box-shadow: none !important; }
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Fundo sutilmente industrial, menos "Tailwind default slate" */
+  background-color: #05070a; 
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(217,39%,10%,1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(217,39%,10%,1) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Scrollbar customizada para não parecer web genérica */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Animações pra dar aquele toque humano de micro-interação */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
   }
+}
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
 }

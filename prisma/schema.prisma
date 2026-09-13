@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Vehicle {
+  id           String      @id @default(uuid())
+  plate        String      @unique
+  status       String
+  vin          String?
+  make         String
+  model        String
+  color        String
+  owner        String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  services     Service[]
+  checklists   Checklist[]
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  description String
+  status      String
+  date        DateTime @default(now())
+  duration    String?
+  mileage     Int?
+  technician  String?
+  notes       String?
+  vehicleId   String
+  vehicle     Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+model Checklist {
+  id          String   @id @default(uuid())
+  type        String
+  assignedTo  String
+  dueDate     DateTime?
+  status      String
+  items       String   // JSON stringified list of items
+  vehicleId   String
+  vehicle     Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
