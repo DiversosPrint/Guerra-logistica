@@ -1,4 +1,5 @@
 const $=s=>document.querySelector(s), key='guerra-veiculos-v1';
+const styleLink=document.createElement('link');styleLink.rel='stylesheet';styleLink.href='/overrides.css';document.head.append(styleLink);
 let vehicles=JSON.parse(localStorage.getItem(key)||'[]'), selected=null;
 const save=()=>{vehicles.forEach(v=>{if(!v.vehicleType)v.vehicleType=(typeof vehicleTypeSelect!=='undefined'?vehicleTypeSelect.value:'Cavalo 4x2')});localStorage.setItem(key,JSON.stringify(vehicles));syncRemote();};
 const vehicleDialog=$('#vehicleDialog'), serviceDialog=$('#serviceDialog');
